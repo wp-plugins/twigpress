@@ -34,6 +34,8 @@ For Twig, the [Twig documentation](http://twig.sensiolabs.org/documentation) is 
 
 = Functions =
 
+<br />
+
 `twigpress_render_twig_template($vals = array(), $template = false, $echo = true)`
 
 Calling this function renders a `$template` with the values passed in `$vals`. You can also choose a specific template to render and whether you would like to echo the template or simply return it.
@@ -42,11 +44,13 @@ There is no need to explicitly set the `$template` name. If this is left to the 
 
 If you wish to simply return the rendered template, set `$echo` to `false`.
 
+<br />
 
 `twigpress_get_the_content()`
 
 Use this function to get the content for the post you are dealing with. If you use `get_the_content`, WordPress returns the unformatted content and the `the_content` filter is not applied. `twigpress_get_the_content()` takes care of both of these tasks.
 
+<br />
 
 = Filters =
 
@@ -67,6 +71,7 @@ Defaults:
 
 In templates these would be accessible through, for example, `{{ site.stylesheet_directory }}`.
 
+<br />
 
 `twigpress_twig_global_functions`
 
@@ -74,6 +79,7 @@ There will be times when you need to use PHP functions in your templates, and th
 
 Defaults: `wp_head()`, `wp_footer()`, `wp_title()`, `body_class()`, `wp_nav_menu()`
 
+<br />
 
 `twigpress_twig_post_template_vars`
 
