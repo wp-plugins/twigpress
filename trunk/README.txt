@@ -13,11 +13,11 @@ This plugin provides a simple way for you to use the Twig templating system with
 
 This plugin provides a simple way for you to use the [Twig templating engine](http://twig.sensiolabs.org/) with [WordPress](http://wordpress.org/) themes. A problem with WordPress themes is that it is very easy to create templates that are a mess of PHP and HTML. This isn't good for working with neither does it provide a separation of concerns. The [Twig templating engine](http://twig.sensiolabs.org/) is a great engine that allows you to separate out getting & manipulating your data and rendering it out. You create your themes in the same way as before, only you render a template instead of using PHP within your page structure.
 
-The Getting Started section is a good place to start, it will provide the steps to using this plugin with your theme.
+The Installation section provides the steps to using this plugin with your theme.
 
-The Functions and Filters section provides an easy reference for the different functions/filters and what they can be used for.
+In the Other Notes section, there is an easy reference for the different functions/filters and what they can be used for.
 
-For Twig, the [Twig documentation](http://twig.sensiolabs.org/documentation) is the best resource I can offer. It is very well documented.
+For Twig, the [Twig documentation](http://twig.sensiolabs.org/documentation) is the best resource I can offer. It is extremely well documented.
 
 == Installation ==
 
@@ -28,7 +28,7 @@ For Twig, the [Twig documentation](http://twig.sensiolabs.org/documentation) is 
 4. Activate the plugin through the 'Plugins' menu in WordPress
 5. Use the `twigpress_render_twig_template()` function in your PHP files to render templates
 
-== Functions and Filters ==
+====
 
 = Functions =
 
