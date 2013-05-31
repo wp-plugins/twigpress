@@ -54,6 +54,8 @@ Use this function to get the content for the post you are dealing with. If you u
 
 = Filters =
 
+<br />
+
 `twigpress_twig_site_variables`
 
 This filter is applied when the plugin is instantiated, on the 'init' action, and allows you to alter the array of variables that are passed to the Twig environment when it is first created. As such, these variables are available to all templates. This filter is best suited for site-wide information. For post-specific variables, use the `twigpress_twig_post_template_vars` filter.
