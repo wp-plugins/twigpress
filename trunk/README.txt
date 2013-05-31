@@ -28,7 +28,7 @@ For Twig, the [Twig documentation](http://twig.sensiolabs.org/documentation) is 
 4. Activate the plugin through the 'Plugins' menu in WordPress
 5. Use the `twigpress_render_twig_template()` function in your PHP files to render templates
 
-====
+== ==
 
 = Functions =
 
