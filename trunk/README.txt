@@ -90,5 +90,13 @@ This filter is applied to your passed array of `$vars` immediately before the te
 
 == Changelog ==
 
+= 1.1.0 =
+* [Added] TwigPress now sets up a template cache in your theme folder
+* [Added] TwigPress sets the Twig core to recompile templates when the source code changes
+* [Added] TwigPress sets the Twig core to enforce strict variables, which stops silent failure
+
+= 1.0.1 =
+* Minor changes to codebase
+
 = 1.0.0 =
 * Initial release

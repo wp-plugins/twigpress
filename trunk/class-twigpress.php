@@ -22,7 +22,7 @@
 		 *
 		 * @var     string
 		 */
-		protected $version = '1.0.0';
+		protected $version = '1.1.0';
 
 		/**
 		 * Unique identifier for your plugin.
@@ -40,7 +40,7 @@
 		 *
 		 * @var      object
 		 */
-		public static $instance = null;
+		private static $instance;
 
 		/**
 		 * Path to the plugin
@@ -66,6 +66,13 @@
 		 * @var object
 		 */
 		private static $twig_environment;
+
+		/**
+		 * Twig Environment Settings
+		 *
+		 * @var array
+		 */
+		private static $twig_environment_settings;
 
 		/**
 		 * An array to store the functions that are to be added to
@@ -140,13 +147,26 @@
 			require_once(WP_CONTENT_DIR . '/Twig/Autoloader.php');
 			Twig_Autoloader::register();
 
+			# Setup options for the Twig environment
+			self::setup_twig_environment_options();
+
 			# Now we load the TWIG filesystem and environment
 			self::$twig_loader = new Twig_Loader_Filesystem(get_stylesheet_directory() . '/twigs');
-			self::$twig_environment = new Twig_Environment(self::$twig_loader, array('charset' => get_bloginfo('charset'), 'autoescape' => false));
+			self::$twig_environment = new Twig_Environment(self::$twig_loader, self::$twig_environment_settings);
 
 			# Run our functions for adding global functions and variables to the environment
 			self::add_global_variables();
 			self::add_global_functions();
+		}
+
+		private function setup_twig_environment_options() {
+			self::$twig_environment_settings = array(
+				'charset' => get_bloginfo('charset'),
+				'autoescape' => false,
+				'strict_variables' => true,
+				'auto_reload' => true,
+				'cache' => get_stylesheet_directory() . '/twig_cache'
+			);
 		}
 
 		/**
@@ -199,9 +219,10 @@
 
 			# Let's iterate through our functions array and make them available
 			foreach(self::$global_functions as $function) {
-				# If a string isn't passed, we can't add it to the environment
-				if(false == is_string($function)) {
+				# If a string isn't passed, or the string is empty we can't add it to the environment
+				if( ! is_string($function) || empty($function)) {
 					echo 'Each index in the global functions array must be a string containing a function name, could not add "' . $function . '"';
+					continue;
 				}
 
 				self::$twig_environment->addFunction($function, new Twig_Function_Function($function));
@@ -236,7 +257,7 @@
 		}
 
 		/**
-		 * This function simply stores,  in $template, the filename of the template being used
+		 * This function simply stores, in $template, the filename of the template being used
 		 *
 		 * It also returns the template name so WordPress can keep using it, as the filename is retrieved from a filter
 		 *
